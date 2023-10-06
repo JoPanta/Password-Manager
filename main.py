@@ -2,6 +2,8 @@ from tkinter import *
 from tkinter import messagebox
 import random
 import pyperclip
+
+
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate_passwor():
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
@@ -24,6 +26,8 @@ def generate_passwor():
 
     password_input.insert(0, password)
     pyperclip.copy(password)
+
+
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
 
@@ -37,7 +41,7 @@ def save_password():
     else:
 
         is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered: \nEmail: {email}"
-                                                      f"\nPassword: {password} \nIs it ok to save? ")
+                                                              f"\nPassword: {password} \nIs it ok to save? ")
         if is_ok:
             with open("data.txt", mode="a") as file:
                 file.write(f"{website} | {email} | {password}\n")
@@ -51,7 +55,6 @@ def save_password():
 window = Tk()
 window.title("Password Manager")
 window.config(padx=50, pady=50)
-
 
 canvas = Canvas(width=200, height=200)
 logo = PhotoImage(file="logo.png")
@@ -84,6 +87,4 @@ password_button.grid(row=3, column=2)
 add_button = Button(text="Add", width=44, command=save_password)
 add_button.grid(row=4, column=1, columnspan=2)
 
-
 window.mainloop()
-
